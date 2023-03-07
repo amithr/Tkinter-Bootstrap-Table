@@ -2,7 +2,7 @@ import ttkbootstrap as ttk
 from ttkbootstrap.tableview import Tableview
 from ttkbootstrap.constants import *
 
-app = ttk.Window()
+app = ttk.Window(themename="superhero")
 colors = app.style.colors
 
 coldata = [
@@ -16,17 +16,20 @@ rowdata = [
     ('A136', 'Kimdee Inc.', 45),
     ('A158', 'Farmadding Co.', 36)
 ]
-
-dt = Tableview(
+table = Tableview(
     master=app,
     coldata=coldata,
     rowdata=rowdata,
     paginated=True,
+    pagesize=10, # Number of rows to show per page
+    autofit=False, # Whether or not to automatically change the size of a column based on the existing data
     searchable=True,
     bootstyle=PRIMARY,
-    stripecolor=(colors.light, None),
+    stripecolor=(colors.light, None), # background, foreground
+
+
 )
 
-dt.pack(fill=BOTH, expand=YES, padx=10, pady=10)
+table.pack(fill=BOTH, expand=YES, padx=10, pady=10)
 
 app.mainloop()
