@@ -12,10 +12,11 @@ coldata = [
 ]
 
 rowdata = [
-    ('A123', 'IzzyCo', 12),
+    ['A123', 'IzzyCo', 12],
     ('A136', 'Kimdee Inc.', 45),
     ('A158', 'Farmadding Co.', 36)
 ]
+
 table = Tableview(
     master=app,
     coldata=coldata,
@@ -26,10 +27,16 @@ table = Tableview(
     searchable=True,
     bootstyle=PRIMARY,
     stripecolor=(colors.light, None), # background, foreground
-
-
 )
 
 table.pack(fill=BOTH, expand=YES, padx=10, pady=10)
+
+table.insert_row('end', ['Marzale LLC', 26])
+table.load_table_data()
+
+row = table.tablerows
+print(row[1].values)
+
+# table.delete_row(5)
 
 app.mainloop()
